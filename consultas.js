@@ -6,8 +6,18 @@ const pool = new Pool({
     database: 'likeme',
     allowExitOnIdle: true
 })
-const getDate = async () => {
-    const result = await pool.query("SELECT NOW()")
-    console.log(result)
+
+const agregarPost = async (titulo, img, descripcion, likes) =>{
+    const consulta = 'INSERT posts VALUES (DEFAULT, $1, $2, $3, $4'
+    const values = [titulo, img, descripcion, likes]
+    const results = await pool.query(consulta, values)
+    console.log('Post agregado de forma exitosa!')
 }
-getDate()
+
+leerPost = async () =>{
+    const consulta = 'SELECT * FROM posts'
+    results = await pool.query(consulta)
+    return results
+}
+
+module.exports = {agregarPost, leerPost}
