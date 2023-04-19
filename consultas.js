@@ -16,8 +16,8 @@ const agregarPost = async (titulo, img, descripcion, likes) =>{
 
 leerPost = async () =>{
     const consulta = 'SELECT * FROM posts'
-    results = await pool.query(consulta)
-    return results
+    const {rows} = await pool.query(consulta)
+    return rows
 }
 
 module.exports = {agregarPost, leerPost}
