@@ -25,10 +25,10 @@ app.get('/posts', async (req, res) =>{
 })
 
 //Agregar post
-app.post('/post', async (res, req) =>{
+app.post('/posts', async (res, req) =>{
     const { titulo, url, descripcion } = req.body
     await agregarPost(titulo, url, descripcion)
-    res.json([])
+    res.json()
 })
 
 

@@ -8,7 +8,7 @@ const pool = new Pool({
 })
 
 const agregarPost = async (titulo, img, descripcion, likes = 0) =>{
-    const consulta = 'INSERT posts VALUES (DEFAULT, $1, $2, $3, $4'
+    const consulta = 'INSERT INTO posts VALUES(DEFAULT, $1, $2, $3, $4)'
     const values = [titulo, img, descripcion, likes]
     await pool.query(consulta, values)
     console.log('Post agregado de forma exitosa!')
