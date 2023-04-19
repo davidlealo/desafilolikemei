@@ -25,4 +25,4 @@ app.get('/posts', async (req, res) =>{
     res.json(result)
 })
 
-app.post()
+
