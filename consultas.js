@@ -3,7 +3,7 @@ const pool = new Pool({
     host: 'localhost',
     user: 'postgres',
     password: 'postgres',
-    database: 'posts',
+    database: 'likeme',
     allowExitOnIdle: true
 })
 const getDate = async () => {
