@@ -28,7 +28,7 @@ app.get('/posts', async (req, res) =>{
 app.post('/post', async (res, req) =>{
     const { titulo, url, descripcion } = req.body
     await agregarPost(titulo, url, descripcion)
-    res.json()
+    res.json([])
 })
 
 
