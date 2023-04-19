@@ -6,23 +6,29 @@ const app = express()
 const cors = require('cors')
 
 //Importar funciones de consultas.js
-const {agregarPosts, LeerPost, leerPost} = require('./consultas')
+const {leerPost, agregarPost} = require('./consultas')
 
 //Iniciar cors
 app.use(cors())
 
+//Iniciar MW json
+app.use(express.json())
+
 //Iniciar servidor
 app.listen(3000, ()=> console.log('Servidor iniciado'))
 
-//Get inicial
-app.get('/', (req, res) =>{
-    res.sendFile(__dirname + '/index.html')
-})
 
 //Función asincrona get
 app.get('/posts', async (req, res) =>{
     const result = await leerPost()
     res.json(result)
+})
+
+//Agregar post
+app.post('/post', async (res, req) =>{
+    const { titulo, url, descripcion } = req.body
+    await agregarPost(titulo, url, descripcion)
+    res.json()
 })
 
 
