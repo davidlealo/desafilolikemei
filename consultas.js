@@ -15,6 +15,7 @@ const agregarPost = async (titulo, img, descripcion, likes = 0) =>{
     console.log('Post agregado de forma exitosa!')
 }
 
+
 leerPost = async () =>{
     const consulta = 'SELECT * FROM posts'
     const {rows} = await pool.query(consulta)
