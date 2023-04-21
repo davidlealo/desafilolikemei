@@ -19,16 +19,19 @@ app.listen(3000, ()=> console.log('Servidor iniciado en el puerto 3000'))
 
 
 //Función asincrona get
-app.get('/posts', async (req, res) =>{
+app.get('/posts', async (res, req) =>{
     const result = await leerPost()
-    res.json(result)
+    return res.json(result)
 })
 
 //Agregar post
-app.post('/posts', async (res, req) =>{
-    const { titulo, url, descripcion } = req.body
-    await agregarPost(titulo, url, descripcion)
-    res.json()
-})
-
-
+app.use((req, res, next) => {
+    console.log(req.body);
+    next();
+  });
+  
+  app.post('/posts', async (req, res) => {
+    const { titulo, url, descripcion } = req.body;
+    await agregarPost(titulo, url, descripcion);
+    res.json('');
+  });
